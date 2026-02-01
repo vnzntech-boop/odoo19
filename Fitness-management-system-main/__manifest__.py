@@ -1,8 +1,8 @@
 {
-    'name' : 'Project',
+    'name' : 'Fitness Management System',
     'version' : '16.0.0.0',
     'summary': 'Module for fitness management',
-    'author': 'Aswin',
+    'author': 'Vnzn Technologies',
     'description': """Module for fitness management""",
     'sequence' : -101,
     'category': 'Health Care',

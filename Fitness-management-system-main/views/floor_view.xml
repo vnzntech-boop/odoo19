@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+	<data>
+		<!--form view-->
+        <record id="floor_model_view_form" model="ir.ui.view">
+            <field name="name">floor form</field>
+            <field name="model">floor.model</field>
+            <field name="arch" type="xml">
+                <form string="Floors">
+                    <sheet>
+                    <group>	
+						<group>
+                            
+                            <field name="floor_number" />
+                            <field name="area_of_focus" />
+                            <field name="capacity" />
+
+                        </group>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="floor_model_view_tree" model="ir.ui.view">
+            <field name="name">floor tree</field>
+            <field name="model">floor.model</field>
+            <field name="arch" type="xml">
+                <tree string="Workout">
+                    <field name="floor_number" />
+                    <field name="area_of_focus" />
+                    <field name="capacity" />
+                </tree>
+            </field>
+        </record>
+    </data>
+    <record id="action_for_floor" model="ir.actions.act_window">
+        <field name="name">Floor</field>
+        <field name="type">ir.actions.act_window</field>	
+        <field name="res_model">floor.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Add new floor</p>
+        </field>
+    </record>
+</odoo>

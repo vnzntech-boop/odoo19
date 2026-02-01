@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+
+		<record id="email_template_for_diet" model="mail.template">
+			<field name="name">Mail Template Created Diet</field>
+			<field name="model_id" ref="fitness_management_system.model_diet_model" />
+			<field name="subject">Your Diet From Fitness Management System </field>
+			<field name="email_from">{{object.assigned_trainer_id.work_email}}</field>
+			<field name="email_to">{{object.client_id.email}}</field>
+			<field name="report_template" ref="fitness_management_system.action_report_diet"/>
+			<field name="report_name">Diet plan_{{object.client_id.name}}</field>
+			<field name="body_html" type="html">
+				<div style="margin: 0px; padding: 0px;">
+					<p style="margin: 0px; padding: 0px; font-size: 13px;"> 
+						Hi Sir/Madam, <br />
+						
+						<br />
+						We have successfully prepared your diet <br /><br />
+						Name : <t t-out="object.client_id.name" /> <br /><br />
+						Trainer : <t t-out="object.assigned_trainer_id.name" />
+						<br />
+						Phase : <t t-out="object.phase" />
+						<br />
+						Age : <t t-out="object.age" />
+						<br />
+						Gender : <t t-out="object.gender " />
+						<br />
+						Height : <t t-out="object.height" />
+						<br />
+						Weight : <t t-out="object.weight" />
+						<br />
+						Activity Level : <t t-out="object.activity_level " />
+						<br />
+						<hr/>
+						Calorie Intake : <t t-out="object.calrie_intake " />
+						<br />
+						Protein Intake : <t t-out="object.protein_intake " />
+						<br />
+						Carb Intake : <t t-out="object.carb_intake " />
+						<br />
+						<br />
+						Carb Intake : <t t-out="object.carb_intake " />
+						<br />
+						<br />
+						
+
+						Thanks, </p><br />
+						
+				</div>
+			</field>
+		</record>
+	</data>
+</odoo>

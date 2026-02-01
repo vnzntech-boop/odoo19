@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo> 	
+	<!-- Main Menu --> 
+	<menuitem
+        id = "menu_fitness_management_system"
+        name="Fitness Management System"
+        sequence = "100"
+        />
+        
+    <menuitem
+        id = "sub_menu"
+        parent="fitness_management_system.menu_fitness_management_system"
+        name="Welcome"
+        sequence = "1"
+        />
+
+    <menuitem id="menu_res_partner" 
+        name="Registration" 
+        parent="fitness_management_system.menu_fitness_management_system"
+        sequence="2"
+        action="action_for_customer_registrations"/>
+        
+ 
+        
+   <menuitem
+        id = "diet_menu"
+        parent="fitness_management_system.menu_fitness_management_system"
+        name="Diet and Workout"
+        action ="action_for_diet"
+        sequence = "3"
+        />
+ 
+
+        
+   <menuitem
+        id = "sales_menu"
+        parent="fitness_management_system.menu_fitness_management_system"
+        name="Sales"
+        action ="action_for_sale_order"
+        sequence = "6"
+        />
+        
+    
+  <menuitem id="menu_configuration" 	 
+		name="Configuration" 	
+        parent="fitness_management_system.menu_fitness_management_system"
+		sequence="10"/>
+		
+
+	<menuitem id="menu_employees" 	 
+		name="Employees"
+		action="action_for_employees_registration"	
+        parent="fitness_management_system.menu_configuration"
+		sequence="13"/>
+
+    <menuitem id="menu_trainers_registration" 	 
+		name="Available Trainers"
+		action="action_for_trainers"	
+        parent="fitness_management_system.menu_configuration"
+		sequence="14"/>
+
+  <menuitem id="menu_workout" 	 
+		name="Workouts"
+		action="action_for_workout"	
+        parent="fitness_management_system.menu_configuration"
+		sequence="15"/> 
+        
+
+   <menuitem id="menu_products" 	 
+		name="Products"
+		action="action_for_products"	
+        parent="fitness_management_system.menu_configuration"
+		sequence="16"/>
+		
+
+    <menuitem id="menu_foods_items" 	 
+		name="Foods"
+		action="action_for_foods"	
+        parent="fitness_management_system.menu_configuration"
+		sequence="17"/> 
+
+        
+    <menuitem id="menu_account_payments" 	 
+		name="Payments"
+		action="action_account_payment_inherit"	
+        parent="fitness_management_system.menu_configuration"
+		sequence="19"/>
+
+    <menuitem id="menu_floors" 	 
+		name="Floors"
+		action="action_for_floor"	
+        parent="fitness_management_system.menu_configuration"
+		sequence="20"/>
+
+		
+
+        
+
+		
+	
+	
+
+		
+ 
+		
+		
+   
+        
+</odoo>

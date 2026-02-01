@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id='report_workout_model'>
+			<t t-call='web.html_container'>
+				<t t-foreach='docs' t-as='o'>
+					<!--<t t-call='web.external_layout'>-->
+						<div class='page'>
+							<h1>Diet plan</h1>							
+							<br/>
+							<strong>Name of Client : </strong><span t-field="o.client_id.name" />
+							<br/>
+							<strong>Age : </strong><span t-field="o.client_id.age" />
+							<br/>
+							<strong>Gender : </strong><span t-field="o.client_id.gender" />
+							<br/>
+							<strong>Height : </strong><span t-field="o.client_id.height" />
+							<br/>
+							<strong>Weight : </strong><span t-field="o.client_id.weight" />
+							<br/>
+							<strong>Phase          :  </strong><span t-field="o.phase" />
+							<br />
+							<strong>Activity level :  </strong><span t-field="o.activity_level" />
+							<br></br>
+							<strong>Assigned trainer : </strong><span t-field="o.assigned_trainer_id.name" />
+							<hr/>
+							<strong>Calorie intake          :  </strong><span t-field="o.calrie_intake" />
+							<br />
+							<strong>Protein intake          :  </strong><span t-field="o.protein_intake" />
+							<br />
+							<strong>Carb intake          :  </strong><span t-field="o.carb_intake" />
+							<br />
+							
+							
+							
+						
+							
+							<br />
+							<hr/>
+							
+							<tbody>
+								<table>
+								<tr>
+									<th>Month|</th>
+									<th>Level|</th>
+									<th>Warm up|</th>
+									<th>Post workout|</th>
+									<th>Status|</th>
+								</tr>
+								<!--<br/>-->
+                                       	<t t-foreach="o.workout_line_ids" t-as="o">
+                                       		
+											   <tr>
+												   <td>
+												  <span t-field="o.workout_id.level" /> 
+												  </td>
+												  <td>
+												  <span t-field="o.warm_up" /> 
+												  </td>
+									
+												   <td>
+												  <span t-field="o.workouts" /> 
+												  </td>
+												  
+												   <td>
+												  <span t-field="o.post_workout" /> 
+												  </td>
+												  <td>
+												  <span t-field="o.status" /> 
+												  </td>
+												  <!--<br/>-->
+											    </tr>
+										</t>
+										</table>
+										</tbody>
+										<hr/><hr/>
+										</div>
+				
+					</t>
+				</t>
+
+
+		</template>
+</data>
+</odoo>

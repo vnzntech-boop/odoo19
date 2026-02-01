@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+	<data>
+		<!--form view-->
+        <record id="diet_model_view_form" model="ir.ui.view">
+            <field name="name">diet form</field>
+            <field name="model">diet.model</field>
+            <field name="arch" type="xml">
+                <form string="diet">
+                <header>
+                 <button name="send_mail" type="object"  string="Send Mail"  class="oe_highlight" />
+
+               </header>
+               
+					
+                    <sheet>
+						
+
+                    <group>	
+							<group>
+								<field name="client_id" domain="[('is_client','=',True),('membership','!=',None)]"/>
+								<field name="age" readonly="1"/>
+								<field name="gender"/>
+                                <field name="height" readonly="1"/>
+                                <field name="weight" readonly="1"/>
+								<field name="current_stage"/>
+                                <field name="number_of_clients" invisible="1"/>
+                                <field name="area_of_focus" readonly="1"/>
+                               	<field name="assigned_floor" />
+								<!-- <field name="room"/> -->
+							</group>
+							
+							<group>
+								
+								<field name="assigned_trainer_id" domain = "[('is_trainer','=',True),('number_of_clients','&lt;',10)]"/>
+                                
+								<field name="phase"/>
+                                <field name="activity_level" />
+                                <field name="calrie_intake" />
+                                <field name="protein_intake" />
+                                <field name="carb_intake" />
+
+									</group>	
+						</group>
+						<notebook >
+						
+						<page string="Contact Info">
+						<form>
+						<group>
+							<field name="phone"/>
+							<field name="alt_phone"/>
+							<field name="email"/>
+						</group>
+						</form>
+						</page>
+						<page string="Diet plan">
+						<field name="diet_line_ids" widget="section_and_note_one2many">
+						<tree editable="bottom" widget="section_and_note_one2many">
+							
+							<field name="food_id" domain = "[('is_food','=',True)]"/>
+							<field name="time"/>
+							<field name="ingredients"/>
+							<field name="recipe"/>
+							<field name="calorie"/>
+							<field name="protein"/>
+							<field name="carbs"/>
+							
+						</tree>
+						<form>
+						<group>
+							<field name="food_id"/>
+							<field name="time"/>
+							<field name="ingredients"/>
+							<field name="recipe"/>
+							<field name="calorie"/>
+							<field name="protein"/>
+							<field name="carbs"/>
+							
+						</group>
+
+						</form>
+						</field>
+						
+			                <group name="note_group" col="6" class="mt-2 mt-md-0">										
+		                           <group class="oe_subtotal_footer oe_right" colspan="2" >
+								   </group>
+								   
+							
+								   
+								   
+							<div class="clearfix"/>	
+                   	</group>    
+						
+			</page>
+						
+						
+						<page name="Workouts">
+								
+								<field name="workout_line_ids">
+									<tree editable="bottom">
+										
+										<field name="month" />
+										<field name="workout_id" />
+										<field name="level" />
+										<field name="warm_up" />
+										<field name="workouts" />
+										<field name="post_workout" />
+										<field name="status" />
+
+										
+										<!-- domain="[('level', '=', 'current_stage')]" -->
+										
+									</tree>
+									<form>
+										
+										<field name="month" />
+										<field name="workout_id" />
+										<field name="warm_up" />
+										<field name="workouts" />
+										<field name="post_workout" />
+										<field name="status" />
+									</form>
+									</field>
+							</page>
+							
+							
+							 <page name="Progress Tracking">
+								
+								<field name="progress_line_ids">
+									<tree editable="bottom">
+										
+										<field name="month" />
+										<field name="height" />
+										<field name="weight" />
+										<field name="bmi" />
+										
+										
+										
+									</tree>
+									<form>
+										
+										<field name="month" />
+										<field name="height" />
+										<field name="weight" />
+										<field name="bmi" />
+									</form>
+									</field>
+							</page>   
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							   
+						</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!--Tree view-->
+         <record id="diet_model_view_tree" model="ir.ui.view">
+            <field name="name">diet tree</field>
+            <field name="model">diet.model</field>
+            <field name="arch" type="xml">
+                <tree string="Diet">
+						<field name="client_id"/>
+						<field name="activity_level"/>
+                        <field name="phase"/>
+                </tree>
+            </field>
+        </record>
+        
+ 
+        
+    <record id="diet_views_search" model="ir.ui.view">
+		<field name="name">diet.views.search</field>
+		<field name="model">diet.model</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="gender"/>
+				<field name="phase"/>				
+				<filter name="filter_male" string="Male"
+						domain="[('gender','=','male')]" />
+				<filter name="filter_female" string="Female"
+					domain="[('gender','=','female')]" />
+					
+				<filter name="today_record" 
+	                 string="Today Records" domain="[('date_field', '&gt;=', context_today().strftime('%Y-%m-%d'))]"/>
+	            
+	                 <filter name="yesterday_records" 
+	                 string="Yesterday" domain="[('date_field', '&gt;=', (context_today() + datetime.timedelta(-1)).strftime('%Y-%m-%d'))]"/>
+	            
+	            	<filter string="This Month" name="this_month" 
+	            	domain="[('create_date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),
+	            	('create_date','&lt;',(context_today()+relativedelta(months=1)).strftime('%Y-%m-01'))]"/>
+		
+				<group expand="0" string="Group By">
+						<filter string="Phase" name="phase"
+							context="{'group_by':'phase'}" />
+						
+												
+				</group>               
+            </search>
+		</field>
+	</record>
+	
+	
+        
+        
+        
+        
+        <record id="action_for_diet" model="ir.actions.act_window">
+            <field name="name">Diet</field>
+            <field name="type">ir.actions.act_window</field>	
+            <field name="res_model">diet.model</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'search_default_today_record':1}</field>
+            <field name="help" type="html">
+                <p>Create new diet plan</p>
+            </field>
+        </record>
+        
+        
+        
+        
+</data>
+</odoo>

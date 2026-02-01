@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>		
+		<record id="view_cancel_form" model="ir.ui.view">
+			<field name="name">view.cancel.form</field>
+			<field name="model">cancel.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Cancel Membership">
+					<group>
+						<group>
+								<field name="partner_id"/>
+								<field name="current_membership" />
+								<field name="cancel_reason"/>
+								
+								
+								
+                        </group>
+                         
+					</group>
+					<footer>
+						
+						<button  string="confirm" class="btn-secondary" name="cancel_membership" type="object"/>		
+                        <button string="Cancel" class="btn-secondary" special="cancel" />				
+					</footer>
+				</form>
+			</field>
+		</record>	
+					
+		<record id="action_cancel" model="ir.actions.act_window"> 		
+			<field name="name">cancel membership</field> 		
+			<field name="type">ir.actions.act_window</field> 		
+			<field name="res_model">cancel.wizard</field> 		
+			<field name="view_mode">form</field> 	
+			<field name="view_id" ref="view_cancel_form" />			
+			<field name="target">new</field>
+			<field name="binding_model_id" ref="fitness_management_system.model_res_partner" />
+			<field name="binding_view_types">list</field>
+		</record>
+    </data>
+</odoo>

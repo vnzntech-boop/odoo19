@@ -11,11 +11,11 @@
     'maintainer': 'Venzn',
     'support': 'vnzntech@gmail.com',
     'website': '',
-    'depends': ['account','contacts'],\
+    'depends': ['account','contacts'],
     'icon': "/vn_essential_reports/static/description/icon.png",
 
     'currency':'USD',
-    'price': 0.0,
+    'price': 85.0,
     'data': [
         'security/ir.model.access.csv',
         'data/account_account_type.xml',

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_diet" model="ir.actions.report">
+        <field name="name">Diet Plan</field>
+        <field name="model">diet.model</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">fitness_management_system.report_diet_model</field>
+        <field name="report_file">fitness_management_system.report_diet_model</field>
+        <field name="print_report_name">('Diet plan - %s' % (object.phase)) </field>
+        <field name="binding_model_id" ref="model_diet_model"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+   <record id="action_report_workout" model="ir.actions.report">
+        <field name="name">Workout Plan</field>
+        <field name="model">diet.model</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">fitness_management_system.report_workout_model</field>
+        <field name="report_file">fitness_management_system.report_workout_model</field>
+        <field name="print_report_name">('Workout plan') </field>
+        <field name="binding_model_id" ref="model_diet_model"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_draft" model="ir.actions.report">
+        <field name="name">Draft customers</field>
+        <field name="model">account.payment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">fitness_management_system.report_account_payment</field>
+        <field name="report_file">fitness_management_system.report_account_payment</field>
+        <field name="print_report_name">('Draft customers') </field>
+        <field name="binding_model_id" ref="model_account_payment"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+
+    
+</odoo>

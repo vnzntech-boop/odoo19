@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id='report_account_payment'>
+			<t t-call='web.html_container'>
+				<t t-foreach='docs' t-as='o'>
+					<!--<t t-call='web.external_layout'>-->
+						<div class='page'>
+							<h1>Customer in draft</h1>							
+							
+							<strong>Name of Client : </strong><span t-field="o.partner_id.name" /> <br/>
+                            <strong>Amount : </strong><span t-field="o.amount" /> <br/>
+                            <strong>Type : </strong><span t-field="o.payment_type" /> <br/>
+
+							<br />
+							
+							
+										<hr/>
+										</div>
+				
+					</t>
+				</t>
+
+
+		</template>
+</data>
+</odoo>

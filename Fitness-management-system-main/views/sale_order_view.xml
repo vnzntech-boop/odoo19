@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    
+
+    <data>	
+		<record id="sale_order_inherit" model="ir.ui.view">
+			<field name="name">sale.order.inherit</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    
+                    <button name="test_button" string="test" type="object" class="oe_highlight"/>
+
+                    <button name="sale_report_writer" string="XLSX REPORT" type="object" class="oe_highlight"/>
+                </xpath>
+
+
+               
+			
+			<xpath expr="//form/sheet/group[1]/group[1]/field[@name='partner_id']" position="attributes">
+                    <attribute name="domain">[('is_client', '=', True)]</attribute>
+            </xpath>
+
+            <xpath expr="//form/sheet/group[1]/group[1]/field[@name='partner_id']" position="attributes">
+                <attribute name="domain">[('is_client', '=', True)]</attribute>
+            </xpath>
+            
+           
+            
+            
+	        
+			</field>
+		</record>
+	</data>
+	
+	
+	
+	
+	
+	<record id="action_for_sale_order" model="ir.actions.act_window">
+        <field name="name">Sales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+        <field name="domain">[('valid_customer','=',True)]</field>
+        <field name="context">{'default_valid_customer': 1}</field>
+        
+    </record>
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>			
+		<record id="hr_employee_inherit_form" model="ir.ui.view">
+			<field name="name">hr.employee.inherit</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form" />			
+			<field name="arch" type="xml">
+
+			<xpath expr="//form/sheet/div">
+					<button name="action_open_clients" string="Clients" type="object" class="oe_stat_button" icon="fa-pencil-square-o" ></button>
+					
+			</xpath> 
+			
+			<field name="parent_id" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="department_id" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			<field name="coach_id" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</field>
+			
+			<xpath expr="//form/sheet/group/group[1]/field[@name='company_id']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				
+			<field name="mobile_phone" position="before">
+							<field name="is_trainer"/>
+							<field name="is_manager" attrs="{'invisible': [('is_trainer', '=', True)]}"/>
+							<field name="gender"/>
+							<field name="number_of_clients"/>
+			</field>
+
+			 <xpath expr="//notebook" position="attributes">
+            <attribute name="invisible">1</attribute>
+        	</xpath>
+			
+			<field name="job_id" position="after">
+					<field name="hr_empoyee_id" attrs="{'invisible': [('is_trainer', '!=', True)]}" domain = "[('is_manager','=',True)]"/>
+
+			</field>	
+			</field>
+			
+			
+			
+			
+		
+		</record>
+		<record id="hr_empoyees_views_search" model="ir.ui.view">
+		<field name="name">hr.employee.search</field>
+		<field name="model">hr.employee</field>
+		<field name="arch" type="xml">
+			<search>
+						
+				
+					
+				
+				<group expand="0" string="Group By">
+						<filter string="Manager" name="manager"
+							context="{'is_trainer':True}" />
+						
+												
+				</group>               
+            </search>
+		</field>
+		
+		
+		
+		
+		
+	</record>
+		
+	</data>
+	
+	<record id="action_for_employees_registration" model="ir.actions.act_window">
+        <field name="name">Employees registration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,form,tree</field>
+        <field name="domain">['|',('is_trainer','=',True),('is_manager','=',True)]</field>
+    </record>
+
+    
+    
+    
+    
+    
+    	<record id="action_for_trainers" model="ir.actions.act_window">
+        <field name="name">Trainers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,form,tree</field>
+        <field name="context">{'default_is_trainer': 1,'default_job_id':8}</field>
+      	<field name="domain">[('is_trainer','=',True)]</field>
+    </record>
+    
+</odoo>

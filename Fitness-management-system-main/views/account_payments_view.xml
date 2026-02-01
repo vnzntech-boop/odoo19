@@ -1,0 +1,63 @@
+<odoo>
+    <!-- server action -->
+    <record id="action_print_payments" model="ir.actions.server">
+        <field name="name">Inform Clients</field>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="binding_model_id" ref="account.model_account_payment"/>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                if record.state == 'draft':
+                    record.send_mail()
+        </field>
+    </record>
+
+    <data>
+        <!-- Inheriting the account.payment form view -->
+        <record id="view_account_payment_form_inherit" model="ir.ui.view">
+            <field name="name">account.payment.form.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+             <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                    <button name="send_mail" string="Send mail" type="object" class="oe_highlight" />
+                    <button name="create_invoice" string="invoice" type="object" class="oe_highlight" />
+                    <!-- <button name="test" string="in" type="object" class="oe_highlight" /> -->
+
+                </xpath>
+                <field name="partner_id" position="after">
+                    
+                    <field name="custom_field" invisible="1"/>
+                    <field name="caution_paid"/>
+                    <field name="base_fee"  />
+                    <field name="membership" />
+                    <field name="caution_deposit"/>
+                    <field name="offers" attrs="{'invisible': [('caution_paid', '!=', True)]}"/>
+                </field>
+
+                <field name="is_internal_transfer" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="ref" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="partner_bank_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field> 
+        </record>
+    </data>
+
+     
+
+    <record id="action_account_payment_inherit" model="ir.actions.act_window">
+        <field name="name">Payments</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help">Payments</field>
+    </record>
+
+
+
+    
+</odoo>

@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+user_access_diet_model,Diet MODEL USER ACCESS,model_diet_model,,1,1,1,1
+user_access_diet_model_lines,Diet model lines USER ACCESS,model_diet_model_lines,,1,1,1,1
+access_workout,access.wokrkout,model_workout_model,group_manager,1,1,1,1
+user_access_workout_model_lines,Workout Model lines lines USER ACCESS,model_workout_model_lines,group_manager,1,1,1,1
+user_access_progress_model_lines,Progress Model Lines USER ACCESS,model_progress_model_lines,group_manager,1,1,1,1
+user_access_res_partner,Res partner Model Lines USER ACCESS,model_res_partner,group_manager,1,1,1,1
+user_access_update_wizard,Update wizard MODEL  USER ACCESS,model_update_wizard,group_manager,1,1,1,1
+user_access_hr_employee,Hr employee MODEL  USER ACCESS,model_hr_employee,group_manager,1,1,1,1
+user_access_cancel_wizard,cancel  wizard MODEL  USER ACCESS,model_cancel_wizard,group_manager,1,1,1,1
+user_access_floor_model,FLOOR MODEL USER ACCESS,model_floor_model,group_manager,1,1,1,1

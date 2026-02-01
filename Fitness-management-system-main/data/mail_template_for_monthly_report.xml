@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+
+		<record id="email_template_monthly_report" model="mail.template">
+			<field name="name">Inform To trainer</field>
+			<field name="model_id" ref="fitness_management_system.model_diet_model" />
+			<field name="subject">Monthly report</field>
+			<field name="email_from">{{object.assigned_trainer_id.hr_empoyee_id.work_email}}</field>
+			<field name="email_to">{{object.client_id.email}}</field>
+			<field name="body_html" type="html">
+				<div style="margin: 0px; padding: 0px;">
+					<p style="margin: 0px; padding: 0px; font-size: 13px;"> 
+						Hi <t t-out="object.client_id.name" />, <br />
+						
+						<br />
+						Your monthly report<br /><br />
+						Name : <t t-out="object.client_id.name" /> <br /><br />
+						<br />
+						Phase : <t t-out="object.phase" />
+						<br />
+						Age : <t t-out="object.age" />
+						<br />
+						Gender : <t t-out="object.gender " />
+						<br />
+						Height : <t t-out="object.height" />
+						<br />
+						Weight : <t t-out="object.weight" />
+						<br />
+						
+						<hr/>
+							<t t-foreach="object.progress_line_ids" t-as="o">
+                                       		<h4>Month:</h4><t t-out="o.month "/><br/>
+                                       		<h4>Warm up:</h4><t t-out="o.height "/><br />
+                                       		<h4>Workouts:</h4><t t-out="o.weight "/><br />
+                                       		<h4>Post workouts:</h4><t t-out="o.bmi "/><br />
+										</t>
+										
+										
+										<br /><br />
+						
+						
+						
+						
+						Thanks, </p><br />
+						
+				</div>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>		
+		<record id="view_update_form" model="ir.ui.view">
+			<field name="name">view.update.form</field>
+			<field name="model">update.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Update Membership">
+					<group>
+						<group>
+							<field name="partner_id" readonly="1"/>
+							<field name="membership"/>
+							<field name="updated_date"/>
+								
+								
+								
+								
+                        </group>
+                         
+					</group>
+					<footer>
+						<button string="Cancel" class="btn-secondary" special="cancel" />
+						<button  string="Update" class="btn-secondary" name="update_membership" type="object"/>						
+					</footer>
+				</form>
+			</field>
+		</record>	
+					
+		<record id="action_update" model="ir.actions.act_window"> 		
+			<field name="name">update membership</field> 		
+			<field name="type">ir.actions.act_window</field> 		
+			<field name="res_model">update.wizard</field> 		
+			<field name="view_mode">form</field> 	
+			<field name="view_id" ref="view_update_form" />			
+			<field name="target">new</field>
+			<field name="binding_model_id" ref="fitness_management_system.model_res_partner" />
+			<field name="binding_view_types">list</field>
+		</record>
+    </data>
+</odoo>

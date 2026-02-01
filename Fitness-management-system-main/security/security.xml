@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.module.category" id="module_fitness_management_system">
+		<field name="name">Fitness Management System</field>
+		<field name="description">module for health care</field>
+	</record>
+
+    <record id ="group_manager" model ="res.groups">
+		<field name="name">Manager</field>
+		<field name="category_id" ref="module_fitness_management_system"/>
+	</record>
+	
+	<record id ="group_trainer" model ="res.groups">
+		<field name="name">Trainer</field>
+		<field name="category_id" ref="module_fitness_management_system"/>
+		<field name="implied_ids" eval="[(4,ref('group_manager'))]"/>
+	</record>
+
+
+	<!-- <record id="fitness_management_trainer_rules" model="ir.rule">
+		<field name="name">Fitness  record rule trainer </field>
+		<field name="model_id" ref="module_fitness_management_system.model_hr_employee" />	      
+		 <field name="domain_force">[('user_id.id','=',user.id)]</field>
+		<field name="groups" eval="[(4, ref('module_fitness_management_system.user_group'))]"/>
+		<field name="perm_read" eval="True"/>
+		 <field name="perm_write" eval="False"/>
+		<field name="perm_create" eval="False"/>
+		<field name="perm_unlink" eval="False"/>
+	</record>  -->
+	
+</odoo>

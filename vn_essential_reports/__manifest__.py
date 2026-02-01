@@ -15,7 +15,7 @@
     'icon': "/vn_essential_reports/static/description/icon.png",
 
     'currency':'USD',
-    'price': 10.0,
+    'price': 0.0,
     'data': [
         'security/ir.model.access.csv',
         'data/account_account_type.xml',

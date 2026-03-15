@@ -16,9 +16,9 @@
     'company': 'Venzn',
     'maintainer': 'Venzn',
     'support': 'vnzntech@gmail.com',
-
+    'icon': "/user_performance_dashboard/static/logo.png",
     'currency':'USD',
-    'price': 1.0,
+    'price': 1.5,
     
     'assets': {
         'web.assets_backend': [

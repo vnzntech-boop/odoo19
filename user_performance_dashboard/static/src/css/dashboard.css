@@ -1,0 +1,263 @@
+.o_user_dashboard_container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #f1f5f9;
+    color: #334155;
+    font-family: 'Inter', sans-serif;
+    padding: 20px;
+}
+
+/* Heading Styling */
+.dashboard_header_main {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.dashboard_header_main h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0;
+    border-left: 5px solid #3A9AFF;
+    padding-left: 15px;
+}
+
+/* Filters Bar */
+.dashboard_filters_bar {
+    display: flex;
+    gap: 30px;
+    background: #ffffff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.filter_group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter_group label {
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.filter_group select,
+.filter_group input {
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* Layout */
+.dashboard_layout {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+/* Sidebar Profile (Aligned Left, No Border/Shadow) */
+.dashboard_sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    /* Removed background, border, shadow as requested */
+    background: transparent;
+    padding: 25px;
+    text-align: center;
+    height: fit-content;
+}
+
+.profile_img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    /* Removed border */
+    object-fit: cover;
+    /* Removed shadow */
+    margin-bottom: 15px;
+}
+
+.user_name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.user_job_title {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* Content & Tiles */
+.dashboard_content {
+    flex: 1;
+}
+
+.welcome_tile {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.welcome_tile_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.welcome_message {
+    text-align: left;
+}
+
+.welcome_filters {
+    display: flex;
+    gap: 20px;
+}
+
+/* Compact tiles row styling */
+.metrics_row .metric_tile {
+    min-height: 140px;
+    padding: 18px;
+}
+
+/* Left-align the metrics row so the first (quotations) sits a bit left */
+/* metrics row default layout (no forced left alignment / animation) */
+
+.tile_amount {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: rgba(0,0,0,0.7);
+}
+
+.filter_item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter_item label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.welcome_tile h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.welcome_tile p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+.metric_tile {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    border-radius: 16px;
+    min-height: 200px;
+    /* Increased height */
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.metric_tile:hover {
+    transform: translateY(-5px);
+}
+
+.tile_icon {
+    font-size: 40px;
+    margin-right: 25px;
+    opacity: 0.9;
+}
+
+.tile_label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.tile_value {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 5px 0 0;
+}
+
+/* Specific Tile Colors */
+.tile_blue {
+    background-color: #3A9AFF;
+    color: white;
+}
+
+.tile_incentive {
+    background-color: #d1eac0;
+    background-image: url('/user_performance_dashboard/static/src/img/green_tile_bg.png');
+    background-size: cover;
+    background-position: center;
+    color: #166534;
+    /* Dark green for text contrast */
+    border: none;
+}
+
+.tile_incentive .tile_icon {
+    color: #166534;
+}
+
+/* Amount Due tile color */
+.tile_amount_due {
+    background: #EDDCC6;
+    color: #4b2e10;
+}
+.tile_amount_due .tile_icon {
+    color: rgba(0,0,0,0.6);
+}
+
+/* Slightly increase Payments Received tile width */
+.tile_payments_posted {
+    min-width: 220px;
+}
+
+/* Background colors for new tiles */
+.tile_quotations {
+    background: linear-gradient(135deg,#fef3c7,#fde68a);
+    color: #92400e;
+}
+.tile_sales {
+    background: linear-gradient(135deg,#dbeafe,#93c5fd);
+    color: #1e3a8a;
+}
+.tile_invoices_unpaid {
+    background: linear-gradient(135deg,#fee2e2,#fecaca);
+    color: #9b1c1c;
+}
+.tile_invoices_paid {
+    background: linear-gradient(135deg,#dcfce7,#bbf7d0);
+    color: #065f46;
+}
+.tile_payments_posted {
+    background: linear-gradient(135deg,#eef2ff,#e0e7ff);
+    color: #3730a3;
+}
+
+/* Ensure icons contrast */
+.tile_quotations .tile_icon, .tile_sales .tile_icon, .tile_invoices_unpaid .tile_icon, .tile_invoices_paid .tile_icon, .tile_payments_posted .tile_icon {
+    color: rgba(0,0,0,0.6);
+}

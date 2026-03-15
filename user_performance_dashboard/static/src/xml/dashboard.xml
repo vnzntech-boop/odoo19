@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="user_performance_dashboard.DashboardTemplate" owl="1">
+        <div class="o_user_dashboard_container">
+            <!-- Main Heading -->
+            <div class="dashboard_header_main">
+                <h1>Sales Persons Dashboard</h1>
+            </div>
+
+            <div class="dashboard_layout">
+                <!-- Sidebar Profile (Aligned Left, Fixed) -->
+                <div class="dashboard_sidebar">
+                    <div class="profile_avatar_container">
+                        <img t-att-src="state.user_data.image_url" class="profile_img" alt="User Avatar"/>
+                    </div>
+                    <div class="profile_info">
+                        <h2 class="user_name"><t t-esc="state.user_data.name"/></h2>
+                        <p class="user_job_title"><t t-esc="state.user_data.job_title"/></p>
+                    </div>
+                </div>
+
+                <!-- Metrics Tiles Area -->
+                <div class="dashboard_content">
+                    <!-- Welcome Tile (Top Center) with Filters Inside -->
+                    <div class="welcome_tile">
+                        <div class="welcome_tile_content">
+                            <div class="welcome_message">
+                                <h2>Welcome back, <t t-esc="state.user_data.name"/>!</h2>
+                                <p>Here is your performance overview.</p>
+                            </div>
+                            
+                            <!-- Filters moved inside welcome tile -->
+                            <div class="welcome_filters">
+                                <div class="filter_item" t-if="state.user_data.is_admin">
+                                    <label>Sales Person</label>
+                                    <select class="form-select" t-model="state.filters.user_id" t-on-change="_onFilterChange">
+                                        <t t-foreach="state.user_data.all_users" t-as="user" t-key="user.id">
+                                            <option t-att-value="user.id"><t t-esc="user.name"/></option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="filter_item">
+                                    <label>From</label>
+                                    <input type="date" class="form-control" t-model="state.filters.start_date" t-on-change="_onFilterChange"/>
+                                </div>
+                                <div class="filter_item">
+                                    <label>To</label>
+                                    <input type="date" class="form-control" t-model="state.filters.end_date" t-on-change="_onFilterChange"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- My Customers Tile -->
+                        <div class="col-md-6 mb-4">
+                            <div class="metric_tile tile_blue">
+                                <div class="tile_icon">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">My Customers</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.customer_count"/></h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Incentives Tile -->
+                        <div class="col-md-6 mb-4">
+                            <div class="metric_tile tile_incentive">
+                                <div class="tile_icon">
+                                    <i class="fa fa-money-bill-wave"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">Incentives (SAR)</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.payment_amount"/></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Metrics Row: Quotations / Sale Orders / Invoices / Payments -->
+                    <div class="row metrics_row">
+                        <div class="col mb-4 col-md-2">
+                            <div class="metric_tile tile_quotations">
+                                <div class="tile_icon">
+                                    <i class="fa fa-file-signature"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">Quotations</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.quotations_count"/></h2>
+                                    <p class="tile_amount"><t t-esc="state.user_data.quotations_amount"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mb-4 col-md-2">
+                            <div class="metric_tile tile_sales">
+                                <div class="tile_icon">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">Sale Orders</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.sale_orders_count"/></h2>
+                                    <p class="tile_amount"><t t-esc="state.user_data.sale_orders_amount"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mb-4 col-md-2">
+                            <div class="metric_tile tile_invoices_unpaid">
+                                <div class="tile_icon">
+                                    <i class="fa fa-file-invoice"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">Unpaid Invoices</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.invoices_unpaid_count"/></h2>
+                                    <p class="tile_amount"><t t-esc="state.user_data.invoices_unpaid_amount"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mb-4 col-md-2">
+                            <div class="metric_tile tile_invoices_paid">
+                                <div class="tile_icon">
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">Paid Invoices</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.invoices_paid_count"/></h2>
+                                    <p class="tile_amount"><t t-esc="state.user_data.invoices_paid_amount"/></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mb-4 col-md-2">
+                            <div class="metric_tile tile_payments_posted">
+                                <div class="tile_icon">
+                                    <i class="fa fa-hand-holding-dollar"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">Payments Received</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.payments_posted_count"/></h2>
+                                    <p class="tile_amount"><t t-esc="state.user_data.payments_posted_amount"/></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col mb-4 col-md-2">
+                            <div class="metric_tile tile_amount_due">
+                                <div class="tile_icon">
+                                    <i class="fa fa-exclamation-circle"></i>
+                                </div>
+                                <div class="tile_data">
+                                    <span class="tile_label">Amount Due</span>
+                                    <h2 class="tile_value"><t t-esc="state.user_data.amount_due_count"/></h2>
+                                    <p class="tile_amount"><t t-esc="state.user_data.amount_due"/></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

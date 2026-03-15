@@ -6,7 +6,15 @@
     'description': """Module for fitness management""",
     'sequence' : -101,
     'category': 'Health Care',
-    'website': 'www.fit.com',
+    'website': '',
+    'author': 'Vnzn Tech',
+    'license': 'LGPL-3',
+    'company': 'Venzn',
+    'maintainer': 'Venzn',
+    'support': 'vnzntech@gmail.com',
+
+    'currency':'USD',
+    'price': 1.0,
     'depends' : ['base','sale_management','sale','account','hr'],
     'data': [
         'security/ir.model.access.csv',

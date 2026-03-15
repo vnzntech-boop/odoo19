@@ -18,7 +18,7 @@
     'support': 'vnzntech@gmail.com',
 
     'currency':'USD',
-    'price': 1.0,
+    'price': 1.5,
     
     'assets': {
         'web.assets_backend': [

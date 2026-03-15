@@ -14,7 +14,7 @@
     'support': 'vnzntech@gmail.com',
 
     'currency':'USD',
-    'price': 1.0,
+    'price': 1.5,
     'depends' : ['base','sale_management','sale','account','hr'],
     'data': [
         'security/ir.model.access.csv',
